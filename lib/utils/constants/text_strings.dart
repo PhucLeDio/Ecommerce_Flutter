@@ -1,5 +1,8 @@
 class TTexts {
   // global text
+  static const String and = "and";
+  static const String skip = "Skip";
+  static const String done = "Done";
   static const String submit = "Submit";
   static const String appName = "P-store";
   static const String tContinue = "Continue";
