@@ -10,6 +10,8 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../styles/shadows.dart';
 import '../../icons/t_circular_icon.dart';
+import '../../texts/t_brand_title_text_with_verified_icon.dart';
+import '../../texts/t_product_price_text.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key});
@@ -63,75 +65,50 @@ class TProductCardVertical extends StatelessWidget {
             const SizedBox(height: TSizes.spaceBtwItems / 2),
       
             /// -- Details
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TProductTitleText(title: 'Green NIKE Air shoes', smallSize: true),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text('Nike', overflow: TextOverflow.ellipsis, maxLines: 1, style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(width: TSizes.sm),
-                      const Icon(Iconsax.verify5, color: TColors.primary, size: TSizes.iconXs),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Price
-                      const TProductPriceText(price: '35.0', isLarge: false),
-
-                      /// add to cart button
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: TColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(TSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(TSizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                            width: TSizes.iconLg * 1.2,
-                            height: TSizes.iconLg * 1.2,
-                            child: Center(child: Icon(Iconsax.add, color: TColors.white))
-                        ),
-                      ),
-                    ],
-                  ),
+                  TProductTitleText(title: 'Green NIKE Air shoes', smallSize: true),
+                  SizedBox(height: TSizes.spaceBtwItems / 2),
+                  TBrandTitleWithVerifiedIcon(title: 'NIKE'),
                 ],
               ),
+            ),
+
+            const Spacer(),
+
+            /// Price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                  child: TProductPriceText(price: '35.0', isLarge: false),
+                ),
+
+                /// add to cart button
+                Container(
+                  decoration: const BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                      width: TSizes.iconLg * 1.2,
+                      height: TSizes.iconLg * 1.2,
+                      child: Center(child: Icon(Iconsax.add, color: TColors.white))
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class TProductPriceText extends StatelessWidget {
-  const TProductPriceText({
-    super.key,
-    this.currencySign = '\$',
-    required this.price,
-    this.maxLines = 1,
-    this.isLarge = false,
-    this.lineThrough = false,
-  });
-
-  final String currencySign, price;
-  final int maxLines;
-  final bool isLarge;
-  final bool lineThrough;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      currencySign + price,
-      maxLines: maxLines,
-      overflow: TextOverflow.ellipsis,
-      style: isLarge ? Theme.of(context).textTheme.headlineMedium!.apply(decoration: lineThrough ? TextDecoration.lineThrough : null) : Theme.of(context).textTheme.titleLarge!.apply(decoration: lineThrough ? TextDecoration.lineThrough : null),
     );
   }
 }
