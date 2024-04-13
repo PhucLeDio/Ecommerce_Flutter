@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/password_configuration/reset_password.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';

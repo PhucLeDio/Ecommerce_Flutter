@@ -1,10 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:flutter_ecommerce/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
@@ -15,7 +9,6 @@ import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/images/t_rounded_image.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 
@@ -52,6 +45,8 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                   SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),
