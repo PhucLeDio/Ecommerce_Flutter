@@ -29,6 +29,7 @@ dependencies:
   # State management
   get: ^4.6.6
   get_storage: ^2.1.1
+  firebase_core: ^2.29.0
 
 
 dev_dependencies:
