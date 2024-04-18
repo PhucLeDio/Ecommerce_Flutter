@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/onboarding/onboarding.dart';
@@ -9,6 +10,7 @@ class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   final deviceStorage = GetStorage();
+  final _auth = FirebaseAuth.instance;
 
   @override
   void onReady() {
@@ -18,21 +20,27 @@ class AuthenticationRepository extends GetxController {
 
   screenRedirect() async {
     // local storage
-    if (kDebugMode) {
-      print('======================= GET STORAGE Auth Repo ======================');
-      print(deviceStorage.read('IsFirstTime'));
-    }
     deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true ? Get.offAll(() => const LoginScreen()) : Get.offAll(() => const OnBoardingScreen());
+    deviceStorage.read('IsFirstTime') != true
+        ? Get.offAll(() => const LoginScreen())
+        : Get.offAll(() => const OnBoardingScreen());
   }
 
-/// Sign in
-/// Register
-/// ReAuthenticate User
-/// Mail authenticate
-/// Forget Password
-/// Google
-/// Facebook
-/// logout
-/// delete user
+  /// Sign in
+  /// Register
+  Future<UserCredential> registerWithEmailAndPassword (String email, String password) async {
+    try {
+      return await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// ReAuthenticate User
+  /// Mail authenticate
+  /// Forget Password
+  /// Google
+  /// Facebook
+  /// logout
+  /// delete user
 }

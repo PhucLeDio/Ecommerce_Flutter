@@ -40,4 +40,6 @@ class TImages {
 
   // -- Products
   static const String productImage1 = "assets/images/products/NIKE.png";
+
+  static const String docerAnimation = "";
 }
