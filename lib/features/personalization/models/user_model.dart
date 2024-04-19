@@ -11,6 +11,7 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
+  String role;
 
   UserModel({
     required this.id,
@@ -20,6 +21,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
+    required this.role,
   });
 
   String get fullName => '$firstName $lastName';
@@ -38,7 +40,7 @@ class UserModel {
     return usernameWithPrefix;
   }
 
-  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username: '', email: '', phoneNumber: '', profilePicture: '');
+  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username: '', email: '', phoneNumber: '', profilePicture: '', role: '');
 
   Map<String, dynamic> toJson() {
     return {
@@ -48,6 +50,7 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Role': role,
     };
   }
 
@@ -62,6 +65,7 @@ class UserModel {
           email: data['Email'] ?? '',
           phoneNumber: data['PhoneNumber'] ?? '',
           profilePicture: data['ProfilePicture'] ?? '',
+          role: data['Role'] ?? '',
       );
     } else {
       return UserModel.empty();

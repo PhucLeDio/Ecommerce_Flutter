@@ -66,7 +66,8 @@ class SignupController extends GetxController {
           username: username.text.trim(),
           email: email.text.trim(),
           phoneNumber: phoneNumber.text.trim(),
-          profilePicture: ''
+          profilePicture: '',
+          role: 'user'
       );
 
       final userRepository = Get.put(UserRepository());
@@ -79,7 +80,7 @@ class SignupController extends GetxController {
       TLoaders.successSnackBar(title: 'Congratulations', message: 'Your account has been created! Verify email to continue.');
 
       //Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim(),));
     } catch (e) {
       //Remove Loader
       TFullScreenLoader.stopLoading();
