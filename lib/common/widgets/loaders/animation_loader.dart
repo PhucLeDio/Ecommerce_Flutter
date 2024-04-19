@@ -43,6 +43,4 @@ class TAnimationLoaderWidget extends StatelessWidget {
       ),
     );
   }
-
-
 }
