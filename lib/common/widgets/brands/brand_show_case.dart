@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/brands/t_brand_card.dart';
 
 import '../../../utils/constants/colors.dart';
+<<<<<<< HEAD
+=======
+import '../../../utils/constants/image_strings.dart';
+>>>>>>> origin/main
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../custom_shapes/containers/rounded_container.dart';
