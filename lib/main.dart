@@ -5,7 +5,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app.dart';
-import 'package:flutter_ecommerce/utils/constants/colors.dart';
 
 import 'data/repositories/authentication/authentication_repository.dart';
 
@@ -22,3 +21,5 @@ Future<void> main() async {
 
   runApp(const App());
 }
+
+

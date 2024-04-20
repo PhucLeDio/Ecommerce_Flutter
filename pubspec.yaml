@@ -7,7 +7,8 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0-99.1.beta <4.0.0'
+  sdk: "3.3.3"
+
 
 dependencies:
   flutter:
@@ -51,7 +52,7 @@ flutter:
   #----------Local assets-----------#
   assets:
     - assets/logos/
-    - assets/icons/brands/
+    - assets/images/user/
     - assets/images/on_boarding_images/
     - assets/images/animations/
     - assets/icons/categories/

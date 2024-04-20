@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/home_controller.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../../../../common/widgets/custom_shapes/containers/circular_container.dart';
 import '../../../../../common/widgets/images/t_rounded_image.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class TPromoSlider extends StatelessWidget {
