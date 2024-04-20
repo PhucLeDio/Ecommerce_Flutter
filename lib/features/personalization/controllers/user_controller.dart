@@ -106,11 +106,12 @@ class UserController extends GetxController {
       // First re-authen user
       final auth = AuthenticationRepository.instance;
       final provider = auth.authUser!.providerData.map((e) => e.providerId).first;
+
       if (provider.isNotEmpty) {
         // re verify auth email
         if (provider == 'google.com') {
-          // await auth.signInWithGoogle();
-          // await auth.deleteAccount();
+          await auth.signInWithGoogle();
+          await auth.deleteAccount();
           TFullScreenLoader.stopLoading();
           Get.offAll(() => const LoginScreen());
         } else if (provider == 'password') {
