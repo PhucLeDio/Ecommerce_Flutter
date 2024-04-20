@@ -57,6 +57,7 @@ class UserModel {
   factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
+      print(UserModel);
       return UserModel(
           id: document.id,
           firstName: data['FirstName'] ?? '',
