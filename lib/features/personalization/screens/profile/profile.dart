@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:flutter_ecommerce/common/widgets/images/t_circular_image.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
+import 'package:flutter_ecommerce/features/personalization/controllers/user_controller.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -13,15 +16,16 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
-      appBar: TAppBar(
+      appBar: const TAppBar(
         showBackArrow: true,
         title: Text('Profile'),
       ),
       // body
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               // profile pic
@@ -44,8 +48,8 @@ class ProfileScreen extends StatelessWidget {
               const TSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TProfileMenu(onPressed: () { }, title: 'Name', value: 'Coding with P'),
-              TProfileMenu(onPressed: () { }, title: 'Username', value: 'Coding with P'),
+              TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.user.value.fullName),
+              TProfileMenu(onPressed: () { }, title: 'Username', value: controller.user.value.username),
 
               const SizedBox(height: TSizes.spaceBtwItems / 2),
               const Divider(),
@@ -55,9 +59,9 @@ class ProfileScreen extends StatelessWidget {
               const TSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TProfileMenu(onPressed: () { }, title: 'User ID', value: '123456'),
-              TProfileMenu(onPressed: () { }, title: 'Email', value: 'Coding with P'),
-              TProfileMenu(onPressed: () { }, title: 'Phone Number', value: '0123456789'),
+              TProfileMenu(onPressed: () { }, title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy),
+              TProfileMenu(onPressed: () { }, title: 'Email', value: controller.user.value.email),
+              TProfileMenu(onPressed: () { }, title: 'Phone Number', value: controller.user.value.phoneNumber),
               TProfileMenu(onPressed: () { }, title: 'Gender', value: 'Male'),
               TProfileMenu(onPressed: () { }, title: 'Date of birth', value: '3 Dec, 2004'),
               const Divider(),
@@ -65,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: const Text('Close account', style: TextStyle(color: Colors.red)),
                 ),
               ),

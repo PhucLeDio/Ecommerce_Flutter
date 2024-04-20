@@ -11,7 +11,6 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
-  String role;
 
   UserModel({
     required this.id,
@@ -21,7 +20,6 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
-    required this.role,
   });
 
   String get fullName => '$firstName $lastName';
@@ -40,7 +38,7 @@ class UserModel {
     return usernameWithPrefix;
   }
 
-  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username: '', email: '', phoneNumber: '', profilePicture: '', role: '');
+  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username: '', email: '', phoneNumber: '', profilePicture: '');
 
   Map<String, dynamic> toJson() {
     return {
@@ -50,14 +48,12 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
-      'Role': role,
     };
   }
 
   factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
-      print(UserModel);
       return UserModel(
           id: document.id,
           firstName: data['FirstName'] ?? '',
@@ -66,7 +62,6 @@ class UserModel {
           email: data['Email'] ?? '',
           phoneNumber: data['PhoneNumber'] ?? '',
           profilePicture: data['ProfilePicture'] ?? '',
-          role: data['Role'] ?? '',
       );
     } else {
       return UserModel.empty();
