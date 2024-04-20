@@ -5,9 +5,11 @@ import 'package:flutter_ecommerce/common/widgets/list_tiles/settings_menu_tile.d
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
+import '../profile/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -33,7 +35,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   ///--user profile card
-                  const TUserProfileTile(),
+                  TUserProfileTile(onPressed: () => Get.to(const ProfileScreen())),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
