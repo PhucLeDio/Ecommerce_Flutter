@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -17,19 +16,25 @@ class NetworkManager extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _connectivitySubscription = _connectivity.onConnectivityChanged.map((result) => result[0]).listen(_updateConnectionStatus);
+    _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    // _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    if (result == ConnectivityResult.none) {
-      TLoaders.warningSnackbar(title: 'No Internet Connection');
+    _connectionStatus.value = result;
+    if (_connectionStatus.value == ConnectivityResult.none) {
+      TLoaders.customToast(message: 'No internet connection!');
     }
   }
 
   Future<bool> isConnected() async {
     try {
       final result = await _connectivity.checkConnectivity();
-      return result != ConnectivityResult.none;
+      if (result == ConnectivityResult.none) {
+        return false;
+      } else {
+        return true;
+      }
     } on PlatformException catch (_) {
       return false;
     }
