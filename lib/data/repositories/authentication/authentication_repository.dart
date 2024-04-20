@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_ecommerce/data/repositories/user/user_repository.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/signup/verify_email.dart';
@@ -14,6 +15,9 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  /// Get authenticate user data
+  User? get authUser => _auth.currentUser;
+
   @override
   void onReady() {
     FlutterNativeSplash.remove();
@@ -26,14 +30,14 @@ class AuthenticationRepository extends GetxController {
       if (user.emailVerified) {
         Get.offAll(() => const NavigationMenu());
       } else {
-        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email,));
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }
     } else {
       // local storage
       deviceStorage.writeIfNull('IsFirstTime', true);
       deviceStorage.read('IsFirstTime') != true
           ? Get.offAll(() => const LoginScreen())
-          : Get.offAll(() => const OnBoardingScreen());
+          : Get.offAll(const OnBoardingScreen());
     }
   }
 
@@ -59,6 +63,18 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// ReAuthenticate User
+  Future<void> reAuthenticateWithEmailAndPassword(String email, String password) async {
+    try {
+      // create a credential
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+
+      // re-authen
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   /// Forget Password
   /// Google
   /// Facebook
@@ -73,4 +89,12 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// delete user
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }
