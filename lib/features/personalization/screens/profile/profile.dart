@@ -6,6 +6,7 @@ import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:flutter_ecommerce/features/shop/screens/home/widgets/shimmer.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -33,8 +34,14 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(image: TImages.user, width: 80, height: 80,),
-                    TextButton(onPressed: (){}, child: const Text('Change profile pic')),
+                    Obx((){
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value
+                          ? const TShimmerEffect(width: 80, height: 80, radius: 80,)
+                          : TCircularImage(image: image, width: 80, height: 80, isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(onPressed: () => controller.uploadUserProfilePicture(), child: const Text('Change Profile Picture')),
                   ],
                 ),
               ),
