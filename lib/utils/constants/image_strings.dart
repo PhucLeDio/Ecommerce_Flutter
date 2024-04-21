@@ -37,6 +37,14 @@ class TImages {
   static const String promoBanner2 = "assets/images/banners/buy-now-pay-later.png";
   static const String promoBanner3 = "assets/images/banners/automatic-watering-machine.png";
   static const String promoBanner4 = "assets/images/banners/web-surfing.png";
+  static const String banner1 = "";
+  static const String banner2 = "";
+  static const String banner3 = "";
+  static const String banner4 = "";
+  static const String banner5 = "";
+  static const String banner6 = "";
+  static const String banner7 = "";
+  static const String banner8 = "";
 
   //--Profile
   static const String user = "assets/images/user/person.png";
