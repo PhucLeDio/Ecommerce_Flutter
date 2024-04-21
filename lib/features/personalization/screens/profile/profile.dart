@@ -7,7 +7,7 @@ import 'package:flutter_ecommerce/features/personalization/controllers/user_cont
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/change_phone.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:flutter_ecommerce/features/shop/screens/home/widgets/shimmer.dart';
+import 'package:flutter_ecommerce/common/widgets/shimmers/shimmer.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
