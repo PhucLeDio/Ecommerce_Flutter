@@ -5,6 +5,7 @@ import 'package:flutter_ecommerce/common/widgets/images/t_circular_image.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/change_name.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/change_phone.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/shimmer.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
@@ -68,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
 
               TProfileMenu(onPressed: () { }, title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy),
               TProfileMenu(onPressed: () { }, title: 'Email', value: controller.user.value.email),
-              TProfileMenu(onPressed: () { }, title: 'Phone Number', value: controller.user.value.phoneNumber),
+              TProfileMenu(onPressed: () => Get.to(() => const ChangePhone()), title: 'Phone Number', value: controller.user.value.phoneNumber),
               TProfileMenu(onPressed: () { }, title: 'Gender', value: 'Male'),
               TProfileMenu(onPressed: () { }, title: 'Date of birth', value: '3 Dec, 2004'),
               const Divider(),
