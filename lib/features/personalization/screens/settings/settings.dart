@@ -3,7 +3,9 @@ import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:flutter_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
+import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
+import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AuthenticationRepository.instance);
+    final product = Get.put(ProductRepository.instance);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -105,7 +108,7 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subtitle: 'Upload Data to your Cloud Firebase',
-                      onTap: () {}),
+                      onTap: () => product.uploadDummyData(TDummyData.products)),
                   TSettingsMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',

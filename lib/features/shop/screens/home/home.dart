@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:flutter_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../controllers/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -33,11 +37,16 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   /// Categories
-                  Padding(padding: EdgeInsets.only(left: TSizes.defaultSpace),
+                  Padding(
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
                       children: [
                         /// -- Heading
-                        TSectionHeading(title: 'Popular Categories', showActionButton: false, textColor: TColors.white,),
+                        TSectionHeading(
+                          title: 'Popular Categories',
+                          showActionButton: false,
+                          textColor: TColors.white,
+                        ),
                         SizedBox(height: TSizes.spaceBtwItems),
 
                         /// -- Categories
@@ -46,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                   SizedBox(height: TSizes.spaceBtwSections),
+                  SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -61,11 +70,27 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Heading
-                  TSectionHeading(title: 'Popular products', onPressed: (){}),
+                  TSectionHeading(title: 'Popular products', onPressed: () {}),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   /// -- Popular products
-                  TGridLayout(itemCount: 2, itemBuilder: (_, index) => const TProductCardVertical()),
+
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const TVerticalProductShimmer();
+                    }
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text('No data found',
+                              style: Theme.of(context).textTheme.bodyMedium));
+                    }
+
+                    return TGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) => TProductCardVertical(
+                            product: controller.featuredProducts[index]));
+                  }),
                 ],
               ),
             ),
@@ -75,6 +100,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
