@@ -6,6 +6,7 @@ import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
+import 'package:flutter_ecommerce/features/shop/screens/printer/pdf_print.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -97,6 +98,12 @@ class SettingsScreen extends StatelessWidget {
                     title: 'Account Privacy',
                     subtitle: 'Manage data usage and connected accounts',
                     onTap: () {},
+                  ),
+                  TSettingsMenuTile(
+                    icon: Iconsax.printer,
+                    title: 'PDF printer',
+                    subtitle: 'Print your entire data into a pdf file',
+                    onTap: () => Get.to(() => const TPdfPrinter()),
                   ),
 
                   ///--App Settings
