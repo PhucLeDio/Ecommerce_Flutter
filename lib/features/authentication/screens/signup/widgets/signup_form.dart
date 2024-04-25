@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:flutter_ecommerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:flutter_ecommerce/utils/validators/validation.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
