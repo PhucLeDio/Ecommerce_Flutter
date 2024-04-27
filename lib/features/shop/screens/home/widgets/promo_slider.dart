@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/shimmers/shimmer.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/banner_controller.dart';
-import 'package:flutter_ecommerce/features/shop/controllers/home_controller.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:get/get.dart';
 

@@ -7,7 +7,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: "3.4.0-282.2.beta"
+  sdk: "3.3.3"
 
 
 dependencies:
@@ -32,7 +32,6 @@ dependencies:
   dash_chat_2: ^0.0.18
   chat_gpt_sdk: ^2.2.5
   connectivity_plus: ^5.0.1
-  carousel_slider: ^4.2.1
   flutter_native_splash: ^2.3.2
   smooth_page_indicator: ^1.1.0
 
@@ -45,6 +44,13 @@ dependencies:
   get_storage: ^2.1.1
   firebase_core: ^2.29.0
   firebase_storage: ^11.5.4
+
+  # Product Specific
+  readmore: ^2.2.0
+  carousel_slider: ^4.2.1
+
+
+
 
   # Firebase
   firebase_auth: ^4.19.2

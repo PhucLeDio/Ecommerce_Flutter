@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:flutter_ecommerce/features/personalization/controllers/user_controller.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/image_strings.dart';
-import '../images/t_circular_image.dart';
 
 class TUserProfileTile extends StatelessWidget {
   const TUserProfileTile({

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/features/authentication/controllers/login/login_controller.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/signup/signup.dart';
 import 'package:flutter_ecommerce/navigation_menu.dart';
-import 'package:flutter_ecommerce/utils/validators/validation.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -81,7 +78,7 @@ class TLoginForm extends StatelessWidget {
 
           /// Sign In button
           // SizedBox(width: double.infinity ,child: ElevatedButton(onPressed: () => Get.to(() => const NavigationMenu()), child: Text(TTexts.signIn))),
-          SizedBox(width: double.infinity ,child: ElevatedButton(onPressed: () => Get.to(() => const NavigationMenu()), child: Text(TTexts.signIn))),
+          SizedBox(width: double.infinity ,child: ElevatedButton(onPressed: () => Get.to(() => const NavigationMenu()), child: const Text(TTexts.signIn))),
           const SizedBox(height: TSizes.spaceBtwItems),
 
           /// Create account button
