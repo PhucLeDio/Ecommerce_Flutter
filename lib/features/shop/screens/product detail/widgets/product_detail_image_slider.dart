@@ -56,6 +56,7 @@ class TProductImageSlider extends StatelessWidget {
           const TAppBar(
             showBackArrow: true,
             actions: [TCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+
           ),
         ],
       ),
