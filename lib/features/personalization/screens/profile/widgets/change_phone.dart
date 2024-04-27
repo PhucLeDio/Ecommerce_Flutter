@@ -7,7 +7,6 @@ import 'package:flutter_ecommerce/utils/validators/validation.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../data/repositories/user/update_name_controller.dart';
 
 class ChangePhone extends StatelessWidget {
   const ChangePhone({super.key});

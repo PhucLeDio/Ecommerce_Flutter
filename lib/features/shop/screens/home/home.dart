@@ -4,7 +4,6 @@ import 'package:flutter_ecommerce/features/shop/screens/home/widgets/home_appbar
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:flutter_ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
-import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
