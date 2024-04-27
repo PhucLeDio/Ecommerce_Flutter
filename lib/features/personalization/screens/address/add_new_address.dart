@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/address/MapScreen.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../../utils/constants/colors.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
   const AddNewAddressScreen({super.key});
@@ -12,7 +16,7 @@ class AddNewAddressScreen extends StatelessWidget {
       appBar: const TAppBar(showBackArrow: true, title: Text("Add new address")),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Form(
             child: Column(
               children: [
@@ -38,12 +42,24 @@ class AddNewAddressScreen extends StatelessWidget {
                 const SizedBox(height: TSizes.spaceBtwInputFields),
                 TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global), labelText: "Country")),
                 const SizedBox(height: TSizes.defaultSpace),
-                SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text("Save"))),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Save"),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.to(() => const MapScreen()),
+        backgroundColor: TColors.primary,
+        child: const Icon(Iconsax.location, color: TColors.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // Positions the FAB in the bottom right corner
     );
   }
 }

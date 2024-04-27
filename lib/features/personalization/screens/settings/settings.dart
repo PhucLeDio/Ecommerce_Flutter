@@ -7,6 +7,7 @@ import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/address/address.dart';
+import 'package:flutter_ecommerce/features/shop/screens/assistant/chat_page.dart';
 import 'package:flutter_ecommerce/features/shop/screens/printer/pdf_print.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
@@ -105,6 +106,12 @@ class SettingsScreen extends StatelessWidget {
                     title: 'PDF printer',
                     subtitle: 'Print your entire data into a pdf file',
                     onTap: () => Get.to(() => const TPdfPrinter()),
+                  ),
+                  TSettingsMenuTile(
+                    icon: Iconsax.command,
+                    title: 'Chatbot Assistant',
+                    subtitle: 'Chat with me!',
+                    onTap: () => Get.to(() => const ChatPage()),
                   ),
 
                   ///--App Settings
