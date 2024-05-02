@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:flutter_ecommerce/features/personalization/screens/address/MapScreen.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -55,7 +54,7 @@ class AddNewAddressScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => const MapScreen()),
+        onPressed: () => Get.to(() => const AddNewAddressScreen()),
         backgroundColor: TColors.primary,
         child: const Icon(Iconsax.location, color: TColors.white),
       ),

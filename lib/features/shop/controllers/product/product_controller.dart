@@ -2,8 +2,8 @@ import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 
-import '../../../data/repositories/product/product_repository.dart';
-import '../../../utils/enums/enums.dart';
+import '../../../../data/repositories/product/product_repository.dart';
+import '../../../../utils/enums/enums.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();

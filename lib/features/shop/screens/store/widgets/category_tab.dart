@@ -9,7 +9,7 @@ import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../../controllers/product_controller.dart';
+import '../../../controllers/product/product_controller.dart';
 
 class TCategorytab extends StatelessWidget {
   const TCategorytab({super.key, required this.category});
