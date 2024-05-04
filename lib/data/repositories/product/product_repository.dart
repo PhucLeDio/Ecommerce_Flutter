@@ -42,6 +42,16 @@ class ProductRepository extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> getProductsForBrand({required String brandId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1 ? await _db.collection('Products').where('Brand.Id', isEqualTo: brandId).get() : await _db.collection('Products').where('Brand.Id', isEqualTo: brandId).limit(limit).get();
+      final products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      return products;
+    } catch (e) {
+      throw 'Something went wrong!';
+    }
+  }
+
   /// Upload dummy data to cloud Firebase
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {

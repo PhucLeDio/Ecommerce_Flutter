@@ -9,7 +9,7 @@ import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../controllers/product/all_products_controller.dart';
+import '../../controllers/all_products_controller.dart';
 import '../../controllers/product/product_controller.dart';
 import '../sort/sortable_products.dart';
 

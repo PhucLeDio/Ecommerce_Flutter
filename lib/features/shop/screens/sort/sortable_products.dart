@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/features/shop/controllers/product/all_products_controller.dart';
+import 'package:flutter_ecommerce/features/shop/controllers/all_products_controller.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
