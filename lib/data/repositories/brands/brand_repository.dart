@@ -19,4 +19,23 @@ class BrandRepository extends GetxController {
       throw 'Something went wrong!';
     }
   }
+
+  /// Get brand for category
+  Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
+    try {
+      // Query to get all documents
+      QuerySnapshot brandCategoryQuery = await _db.collection('BrandCategory').where('categoryId', isEqualTo: categoryId).get();
+
+      // Extract brandIds
+      List<String> brandIds = brandCategoryQuery.docs.map((doc) => doc['brandId'] as String).toList();
+
+      final brandsQuery = await _db.collection('Brands').where(FieldPath.documentId, whereIn: brandIds).limit(2).get();
+
+      List<BrandModel> brands = brandsQuery.docs.map((doc) => BrandModel.fromSnapshot(doc)).toList();
+
+      return brands;
+    } catch (e) {
+      throw 'Something went wrong!';
+    }
+  }
 }
