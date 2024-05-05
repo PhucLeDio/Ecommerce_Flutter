@@ -54,6 +54,7 @@ class TImages {
   static const String nikeLogo = "assets/logos/nikelogo.jpg";
 
   static const String docerAnimation = "assets/images/animations/loading.json";
+  static const String pencilAnimation = "assets/images/animations/drawing-on-tablet.json";
 
   // -- Success
   static const String successfullyRegisterAnimation = "assets/images/animations/success.json";

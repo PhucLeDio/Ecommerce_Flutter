@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_ecommerce/common/widgets/images/t_rounded_image.dart';
+import 'package:flutter_ecommerce/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/product_title_text.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/product/product_controller.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
@@ -64,10 +65,10 @@ class TProductCardVertical extends StatelessWidget {
                     ),
       
                   /// -- Favourite Icon Button
-                  const Positioned(
+                  Positioned(
                       top: 0,
                       right: 0,
-                      child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red)
+                      child: TFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),

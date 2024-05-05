@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/product/images_controller.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
@@ -85,9 +86,9 @@ class TProductImageSlider extends StatelessWidget {
               ),
 
               ///--appbar icon
-              const TAppBar(
+              TAppBar(
                 showBackArrow: true,
-                actions: [TCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+                actions: [TFavouriteIcon(productId: product.id,)],
               ),
             ],
           ),
