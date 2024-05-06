@@ -4,6 +4,7 @@ import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/primar
 import 'package:flutter_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/address/address.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -57,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subtitle: 'Set shopping delivery address',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
