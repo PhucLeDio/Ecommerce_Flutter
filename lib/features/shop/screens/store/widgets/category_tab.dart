@@ -6,6 +6,10 @@ import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/features/shop/models/category_model.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../controllers/product_controller.dart';
 
 class TCategorytab extends StatelessWidget {
   const TCategorytab({super.key, required this.category});
@@ -14,6 +18,7 @@ class TCategorytab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -31,7 +36,7 @@ class TCategorytab extends StatelessWidget {
               TSectionHeading(title: 'You might like', onPressed: (){},),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TGridLayout(itemCount: 4, itemBuilder: (_, index) => const TProductCardVertical()),
+              TGridLayout(itemCount: controller.featuredProducts.length, itemBuilder: (_, index) => TProductCardVertical(product: controller.featuredProducts[index])),
               const SizedBox(height: TSizes.spaceBtwSections),
             ],
           ),

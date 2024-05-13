@@ -3,9 +3,14 @@ import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:flutter_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
+import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_ecommerce/features/shop/screens/cart/cart.dart';
 import 'package:flutter_ecommerce/features/shop/screens/order/order.dart';
+import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/address/address.dart';
+import 'package:flutter_ecommerce/features/shop/screens/assistant/chat_page.dart';
+import 'package:flutter_ecommerce/features/shop/screens/printer/pdf_print.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -20,6 +25,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AuthenticationRepository.instance);
+    final product = Get.put(ProductRepository.instance);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -59,7 +65,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subtitle: 'Set shopping delivery address',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
@@ -97,6 +103,18 @@ class SettingsScreen extends StatelessWidget {
                     subtitle: 'Manage data usage and connected accounts',
                     onTap: () {},
                   ),
+                  TSettingsMenuTile(
+                    icon: Iconsax.printer,
+                    title: 'PDF printer',
+                    subtitle: 'Print your entire data into a pdf file',
+                    onTap: () => Get.to(() => const TPdfPrinter()),
+                  ),
+                  TSettingsMenuTile(
+                    icon: Iconsax.command,
+                    title: 'Chatbot Assistant',
+                    subtitle: 'Chat with me!',
+                    onTap: () => Get.to(() => const ChatPage()),
+                  ),
 
                   ///--App Settings
                   const SizedBox(height: TSizes.spaceBtwSections),
@@ -107,7 +125,7 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subtitle: 'Upload Data to your Cloud Firebase',
-                      onTap: () {}),
+                      onTap: () => product.uploadDummyData(TDummyData.products)),
                   TSettingsMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',

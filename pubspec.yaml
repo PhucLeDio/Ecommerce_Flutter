@@ -17,13 +17,21 @@ dependencies:
 
   # Utility packages
   http: ^1.2.1
-  intl: ^0.19.0
+  intl: ^0.18.0
   logger: ^2.1.0
   lottie: ^2.7.0
   shimmer: ^3.0.0
   image_picker: ^1.0.4
   cached_network_image: ^3.1.0
   url_launcher: ^6.2.5
+  pdf: ^3.1.0
+  flutter_pdfview: ^1.3.2
+  path_provider: ^2.0.14
+  dio: ^5.4.3+1
+  flutter_polyline_points: ^2.0.0
+  google_maps_flutter: ^2.6.1
+  dash_chat_2: ^0.0.18
+  chat_gpt_sdk: ^2.2.5
   connectivity_plus: ^5.0.1
   flutter_native_splash: ^2.3.2
   smooth_page_indicator: ^1.1.0
@@ -72,6 +80,7 @@ flutter:
     - assets/images/banners/
     - assets/images/products/
     - assets/icons/payment_methods/
+    - assets/pdf/
 
   #----------Local font------------#
   fonts:
