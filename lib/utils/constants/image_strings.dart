@@ -51,6 +51,7 @@ class TImages {
 
   // -- Products
   static const String productImage1 = "assets/images/products/NIKE.png";
+  static const String awaitProduct = "assets/images/products/The-product-of-you.png";
   static const String nikeLogo = "assets/logos/nike-logo-5737.png";
 
   static const String docerAnimation = "assets/images/animations/loading.json";
