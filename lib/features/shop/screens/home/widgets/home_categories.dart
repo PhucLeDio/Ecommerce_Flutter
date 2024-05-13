@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../../../common/widgets/image_text_widgets/vertical_image_text.dart';
 import '../../../../../common/widgets/shimmers/category_shimmer.dart';
+import '../../sub_category/sub_categories.dart';
 
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
@@ -32,8 +33,8 @@ class THomeCategories extends StatelessWidget {
             return TVerticalImageText(
               image: category.image,
               title: category.name,
-              // onTap: () => Get.to(() => const SubCategoriesScreen()),
-              onTap: () {},
+              onTap: () => Get.to(() => SubCategoriesScreen(category: category)),
+              // onTap: () {},
             );
           },
         ),

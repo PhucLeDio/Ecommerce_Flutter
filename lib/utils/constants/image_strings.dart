@@ -51,10 +51,16 @@ class TImages {
 
   // -- Products
   static const String productImage1 = "assets/images/products/NIKE.png";
-  static const String nikeLogo = "assets/logos/nikelogo.jpg";
+  static const String awaitProduct = "assets/images/products/The-product-of-you.png";
+  static const String nikeLogo = "assets/logos/nike-logo-5737.png";
 
   static const String docerAnimation = "assets/images/animations/loading.json";
+  static const String pencilAnimation = "assets/images/animations/drawing-on-tablet.json";
 
   // -- Success
   static const String successfullyRegisterAnimation = "assets/images/animations/success.json";
+
+  // -- Payment Methods
+static const String paypal = "assets/icons/payment_methods/paypal.png";
+
 }

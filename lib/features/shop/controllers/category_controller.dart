@@ -1,5 +1,7 @@
 import 'package:flutter_ecommerce/data/repositories/categories/category_repository.dart';
+import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
 import 'package:flutter_ecommerce/features/shop/models/category_model.dart';
+import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 
@@ -40,5 +42,24 @@ class CategoryController extends GetxController {
   }
 
   /// Load selected category
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      final subCategories = await _categoryRepository.getSubCategories(categoryId);
+      return subCategories;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      return [];
+    }
+  }
+
   /// Get category or sub-category products
+  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+    try {
+      final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      return [];
+    }
+  }
 }

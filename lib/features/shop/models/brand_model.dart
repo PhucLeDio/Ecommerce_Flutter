@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pdf/widgets.dart';
+
 class BrandModel {
   String id;
   String name;
@@ -16,7 +19,7 @@ class BrandModel {
       'Id': id,
       'Name': name,
       'Image': image,
-      'ProductsCount': productsCount,
+      'ProductCounts': productsCount,
       'IsFeatured': isFeatured,
     };
   }
@@ -28,8 +31,25 @@ class BrandModel {
         id: data['Id'] ?? '',
         image: data['Image'] ?? '',
         name: data['Name'] ?? '',
-        productsCount: data['ProductsCount'] ?? '',
-        isFeatured: data['IsFeatured'] ?? '',
+        productsCount: data['ProductCounts'] ?? 0,
+        isFeatured: data['IsFeatured'] ?? false,
     );
+  }
+
+  factory BrandModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+
+      // Map json record
+      return BrandModel(
+          id: document.id,
+          name: data['Name'] ?? '',
+          image: data['Image'] ?? '',
+          productsCount: data['ProductCounts'] ?? '',
+          isFeatured: data['IsFeatured'] ?? true,
+      );
+    } else {
+      return BrandModel.empty();
+    }
   }
 }
