@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:flutter_ecommerce/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:flutter_ecommerce/common/widgets/images/t_rounded_image.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/features/shop/screens/product%20detail/widgets/product_attributes.dart';
@@ -15,9 +11,8 @@ import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
-import '../../../../common/widgets/icons/t_circular_icon.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../product reviews/product_reviews.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({super.key, required this.product});
@@ -88,7 +83,7 @@ class ProductDetail extends StatelessWidget {
                           Iconsax.arrow_right_3,
                           size: 18,
                         ),
-                        onPressed: () {}),
+                        onPressed: () => Get.to(()=> const ProductReviewsScreen())),
                   ],
                 ),
                 SizedBox(

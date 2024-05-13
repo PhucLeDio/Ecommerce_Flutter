@@ -14,6 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+
   # Utility packages
   http: ^1.2.1
   intl: ^0.19.0
@@ -48,6 +49,7 @@ dependencies:
   google_sign_in: ^6.1.6
 
 
+  flutter_rating_bar: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,6 +69,7 @@ flutter:
     - assets/icons/categories/
     - assets/images/banners/
     - assets/images/products/
+    - assets/icons/payment_methods/
     - assets/pdf/
 
   #----------Local font------------#

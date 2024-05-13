@@ -7,7 +7,6 @@ import 'package:flutter_ecommerce/features/shop/controllers/product/product_cont
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/enums/enums.dart';
 import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
-import 'package:get/get.dart';
 
 import '../../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -37,7 +36,7 @@ class TProductMetaData extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
                 child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black)),
               ),
-            SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: TSizes.spaceBtwItems),
 
             /// Price
             if (product.productType == ProductType.single.toString() && product.salePrice > 0)
@@ -46,7 +45,7 @@ class TProductMetaData extends StatelessWidget {
             TProductPriceText(price: controller.getProductPrice(product),isLarge: true),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItems/1.5),
+        const SizedBox(height: TSizes.spaceBtwItems/1.5),
         /// Title
          TProductTitleText(title: product.title),
          SizedBox(height: TSizes.spaceBtwItems/1.5),
@@ -58,7 +57,7 @@ class TProductMetaData extends StatelessWidget {
             Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItems/1.5),
+        const SizedBox(height: TSizes.spaceBtwItems/1.5),
         /// Brand
         Row(
           children: [
