@@ -57,4 +57,8 @@ class TImages {
 
   // -- Success
   static const String successfullyRegisterAnimation = "assets/images/animations/success.json";
+
+  // -- Payment Methods
+static const String paypal = "assets/icons/payment_methods/paypal.png";
+
 }
