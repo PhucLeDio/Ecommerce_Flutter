@@ -5,6 +5,7 @@ import 'package:flutter_ecommerce/features/authentication/screens/login/login.da
 import 'package:flutter_ecommerce/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:flutter_ecommerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:flutter_ecommerce/navigation_menu.dart';
+import 'package:flutter_ecommerce/utils/local_storage/storage_utility.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -29,6 +30,8 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        await TLocalStorage.init(user.uid);
+
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/features/shop/models/brand_model.dart';
 
 import '../custom_shapes/containers/rounded_container.dart';
 import '../images/t_circular_image.dart';
@@ -14,8 +15,10 @@ class TBrandCard extends StatelessWidget {
     super.key,
     required this.showBorder,
     this.onTap,
+    required this.brand,
   });
 
+  final BrandModel brand;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -32,8 +35,8 @@ class TBrandCard extends StatelessWidget {
             /// -- Icon
             Flexible(
               child: TCircularImage(
-                isNetworkImage: false,
-                image: TImages.clothIcon,
+                isNetworkImage: true,
+                image: brand.image,
                 backgroundColor: Colors.transparent,
                 overlayColor: THelperFunctions.isDarkMode(context) ? TColors.white : TColors.black,
               ),
@@ -46,9 +49,9 @@ class TBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TBrandTitleWithVerifiedIcon(title: 'NIKE', brandTextSize: TextSizes.large),
+                  TBrandTitleWithVerifiedIcon(title: brand.name, brandTextSize: TextSizes.large),
                   Text(
-                    '256 products',
+                    '${brand.productsCount ?? 0} products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),

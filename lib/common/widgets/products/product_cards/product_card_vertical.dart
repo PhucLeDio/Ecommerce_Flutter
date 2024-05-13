@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_ecommerce/common/widgets/images/t_rounded_image.dart';
+import 'package:flutter_ecommerce/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/product_title_text.dart';
-import 'package:flutter_ecommerce/features/shop/controllers/product_controller.dart';
+import 'package:flutter_ecommerce/features/shop/controllers/product/product_controller.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/features/shop/screens/product%20detail/product_detail.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
@@ -30,7 +31,7 @@ class TProductCardVertical extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () => Get.to (()=> const ProductDetail()),
+      onTap: () => Get.to(() => ProductDetail(product: product,)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -40,6 +41,7 @@ class TProductCardVertical extends StatelessWidget {
           color: dark ? TColors.darkerGrey : TColors.white
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// -- Thumpnail, wishlist button, Tag
             TRoudedContainer(
@@ -52,21 +54,22 @@ class TProductCardVertical extends StatelessWidget {
                   Center(child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true)),
       
                   /// -- Sale Tag
-                  Positioned(
-                    top: 12,
-                    child: TRoudedContainer(
-                      radius: TSizes.sm,
-                      backgroundColor: TColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black)),
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 12,
+                      child: TRoudedContainer(
+                        radius: TSizes.sm,
+                        backgroundColor: TColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
+                        child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black)),
+                      ),
                     ),
-                  ),
       
                   /// -- Favourite Icon Button
-                  const Positioned(
+                  Positioned(
                       top: 0,
                       right: 0,
-                      child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red)
+                      child: TFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),
