@@ -4,7 +4,6 @@ import 'package:flutter_ecommerce/common/widgets/texts/product_title_text.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/t_product_price_text.dart';
 import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
-import 'package:get/get.dart';
 
 import '../../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -31,27 +30,27 @@ class TProductMetaData extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
                 child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black)),
               ),
-            SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: TSizes.spaceBtwItems),
 
             /// Price
            Text('\$46.67', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
             const SizedBox(width: TSizes.spaceBtwItems),
-            TProductPriceText(price: '35',isLarge: true),
+            const TProductPriceText(price: '35',isLarge: true),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItems/1.5),
+        const SizedBox(height: TSizes.spaceBtwItems/1.5),
         /// Title
-         TProductTitleText(title:'Nike Air Force 1'),
-         SizedBox(height: TSizes.spaceBtwItems/1.5),
+         const TProductTitleText(title:'Nike Air Force 1'),
+         const SizedBox(height: TSizes.spaceBtwItems/1.5),
         /// Stock Status
         Row(
           children: [
             const TProductTitleText(title:'Status:'),
-            SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: TSizes.spaceBtwItems),
             Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItems/1.5),
+        const SizedBox(height: TSizes.spaceBtwItems/1.5),
         /// Brand
         Row(
           children: [

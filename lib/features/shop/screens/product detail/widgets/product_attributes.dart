@@ -27,31 +27,31 @@ class TProductAttributes extends StatelessWidget {
             /// Title, Price and Stock Staus
             Row(
               children: [
-                TSectionHeading(title: 'Variation', showActionButton: false),
-                SizedBox(width: TSizes.spaceBtwItems),
+                const TSectionHeading(title: 'Variation', showActionButton: false),
+                const SizedBox(width: TSizes.spaceBtwItems),
 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        TProductTitleText(title: 'Price: ',smallSize: true ),
-                        SizedBox(width: TSizes.spaceBtwItems),
+                        const TProductTitleText(title: 'Price: ',smallSize: true ),
+                        const SizedBox(width: TSizes.spaceBtwItems),
                         /// Actual Price
                         Text(
                           '\$5',
                           style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
                         ),
-                        SizedBox(width: TSizes.spaceBtwItems),
+                        const SizedBox(width: TSizes.spaceBtwItems),
 
                         /// Sale Price
-                        TProductPriceText(price: '4')
+                        const TProductPriceText(price: '4')
                       ]
                     ),
                     /// Stock
                     Row(
                       children: [
-                        TProductTitleText(title: 'Stock: ', smallSize: true),
+                        const TProductTitleText(title: 'Stock: ', smallSize: true),
                         Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
                       ],
                     ),
@@ -60,7 +60,7 @@ class TProductAttributes extends StatelessWidget {
               ],
             ),
             /// Variation Description
-            TProductTitleText(
+            const TProductTitleText(
               title: 'This is the Description of the Product and it can go upto max 4 Lines.',
               smallSize: true,
               maxLines: 4,
@@ -74,8 +74,8 @@ class TProductAttributes extends StatelessWidget {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        TSectionHeading(title: 'Colors', showActionButton: false),
-          SizedBox(height: TSizes.spaceBtwItems/2),
+        const TSectionHeading(title: 'Colors', showActionButton: false),
+          const SizedBox(height: TSizes.spaceBtwItems/2),
         Wrap(
           children: [
             TChoiceChip(text: 'Green', selected: false, onSelected: (value){}),
@@ -88,8 +88,8 @@ class TProductAttributes extends StatelessWidget {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TSectionHeading(title: 'Size',showActionButton: false),
-          SizedBox(height: TSizes.spaceBtwItems/2),
+          const TSectionHeading(title: 'Size',showActionButton: false),
+          const SizedBox(height: TSizes.spaceBtwItems/2),
          Wrap(
            spacing: 8,
            children: [

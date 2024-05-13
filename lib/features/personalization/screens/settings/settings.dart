@@ -4,6 +4,8 @@ import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/primar
 import 'package:flutter_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
+import 'package:flutter_ecommerce/features/shop/screens/cart/cart.dart';
+import 'package:flutter_ecommerce/features/shop/screens/order/order.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -63,13 +65,13 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subtitle: 'Add, remove products and move to checkout ',
-                    onTap: () {},
+                    onTap: () =>Get.to(()=> const CartScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subtitle: 'In-progress and Completed Orders',
-                    onTap: () {},
+                    onTap: ()=> Get.to(()=> const OrderScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.bank,
