@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/common/widgets/icons/t_circular_icon.dart';
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/features/shop/screens/product%20detail/widgets/product_attributes.dart';
@@ -6,12 +7,14 @@ import 'package:flutter_ecommerce/features/shop/screens/product%20detail/widgets
 import 'package:flutter_ecommerce/features/shop/screens/product%20detail/widgets/product_meta_data.dart';
 import 'package:flutter_ecommerce/features/shop/screens/product%20detail/widgets/rating_share_widget.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
-import 'package:flutter_ecommerce/utils/constants/enums.dart';
+import 'package:flutter_ecommerce/utils/enums/enums.dart';
 import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../controllers/product/cart_controller.dart';
 import '../product reviews/product_reviews.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -22,6 +25,8 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final cartController = CartController.instance;
+    cartController.updateAlreadyAddedProductCount(product);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
@@ -110,31 +115,41 @@ class ProductDetail extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton.icon(
-                onPressed: () {
-                  // You can't use setState in a StatelessWidget,
-                  // you need to use a Stateful widget or a state management solution like Provider or Getx
-                  // setState(() {
-                  //   _isLiked =!_isLiked;
-                  // });
-                },
-                icon: Icon(
-                  _isLiked
-                      ? Iconsax.heart5
-                      : Iconsax.heart5,
-                  color: _isLiked
-                      ? Colors.red
-                      : null,
+              Obx(
+                    () => Row(
+                  children: [
+                    TCircularIcon(
+                      icon: Iconsax.minus,
+                      backgroundColor: TColors.darkGrey,
+                      width: 40,
+                      height: 40,
+                      color: TColors.white,
+                      onPressed: () => cartController.productQuantityInCart.value < 1 ? null : cartController.productQuantityInCart.value -= 1,
+                    ),
+                    const SizedBox(width: TSizes.spaceBtwItems,),
+                    Text(cartController.productQuantityInCart.value.toString(), style: Theme.of(context).textTheme.titleSmall,),
+                    const SizedBox(width: TSizes.spaceBtwItems,),
+                    TCircularIcon(
+                      icon: Iconsax.add,
+                      backgroundColor: TColors.black,
+                      width: 40,
+                      height: 40,
+                      color: TColors.white,
+                      onPressed: () => cartController.productQuantityInCart.value += 1,
+                    ),
+                  ],
                 ),
-                label: Text('Add to WishList'),
               ),
-              SizedBox(
-                width: TSizes.spaceBtwItems,
+
+              ElevatedButton(
+                onPressed: () => cartController.addToCart(product),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(TSizes.md),
+                  backgroundColor: TColors.grey,
+                  side: const BorderSide(color: TColors.black),
+                ),
+                child: const Text('Add to cart'),
               ),
-              TextButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Iconsax.shopping_bag),
-                  label: Text('Add to Cart')),
             ],
           ),
         ),

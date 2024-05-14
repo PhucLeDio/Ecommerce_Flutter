@@ -7,7 +7,7 @@ import 'package:flutter_ecommerce/common/widgets/texts/t_brand_title_text_with_v
 import 'package:flutter_ecommerce/common/widgets/texts/t_product_price_text.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
-import 'package:flutter_ecommerce/utils/constants/enums.dart';
+import 'package:flutter_ecommerce/utils/enums/enums.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';

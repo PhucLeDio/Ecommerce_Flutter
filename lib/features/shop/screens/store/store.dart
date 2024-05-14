@@ -14,7 +14,7 @@ import 'package:flutter_ecommerce/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_ecommerce/features/shop/screens/brand/brand_products.dart';
 import 'package:flutter_ecommerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
-import 'package:flutter_ecommerce/utils/constants/enums.dart';
+import 'package:flutter_ecommerce/utils/enums/enums.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
@@ -37,7 +37,7 @@ class StoreScreen extends StatelessWidget {
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed: () {}, iconColor: TColors.black)
+            TCartCounterIcon(iconColor: TColors.black)
           ],
         ),
         body: NestedScrollView(

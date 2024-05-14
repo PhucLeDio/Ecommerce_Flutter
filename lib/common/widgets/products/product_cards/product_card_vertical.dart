@@ -13,6 +13,7 @@ import 'package:flutter_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/screens/home/widgets/add_to_cart.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../styles/shadows.dart';
 import '../../icons/t_circular_icon.dart';
@@ -118,20 +119,7 @@ class TProductCardVertical extends StatelessWidget {
                 ),
 
                 /// add to cart button
-                Container(
-                  decoration: const BoxDecoration(
-                    color: TColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(TSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(TSizes.productImageRadius),
-                    ),
-                  ),
-                  child: const SizedBox(
-                      width: TSizes.iconLg * 1.2,
-                      height: TSizes.iconLg * 1.2,
-                      child: Center(child: Icon(Iconsax.add, color: TColors.white))
-                  ),
-                ),
+                ProductCartAddToCartButton(product: product,),
               ],
             ),
           ],
@@ -140,3 +128,4 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
+
