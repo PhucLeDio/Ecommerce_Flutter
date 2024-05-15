@@ -5,7 +5,7 @@ import '../custom_shapes/containers/rounded_container.dart';
 import '../images/t_circular_image.dart';
 import '../texts/t_brand_title_text_with_verified_icon.dart';
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/enums.dart';
+import '../../../utils/enums/enums.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
