@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/success_screen/success_screen.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/product/cart_controller.dart';
+import 'package:flutter_ecommerce/features/shop/controllers/product/paypal_controller.dart';
 import 'package:flutter_ecommerce/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:flutter_ecommerce/features/shop/screens/purchase/widgets/billing_address_section.dart';
 import 'package:flutter_ecommerce/features/shop/screens/purchase/widgets/billing_amount_section.dart';
@@ -80,7 +81,8 @@ class PurchaseScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: subTotal > 0 ? () => orderController.processOrder(totalAmount) : () => TLoaders.warningSnackbar(title: 'Empty cart', message: 'Add item in the cart in order to process.'),
+            // onPressed: subTotal > 0 ? () => orderController.processOrder(totalAmount) : () => TLoaders.warningSnackbar(title: 'Empty cart', message: 'Add item in the cart in order to process.'),
+            onPressed: subTotal > 0 ? () => Get.to(() => const CheckoutPage()) : () => TLoaders.warningSnackbar(title: 'Empty cart', message: 'Add item in the cart in order to process.'),
             child: Text('Purchase \$$totalAmount')),
       ),
     );

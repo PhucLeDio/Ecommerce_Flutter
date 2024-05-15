@@ -5,6 +5,7 @@ import 'package:flutter_ecommerce/common/widgets/list_tiles/settings_menu_tile.d
 import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
+import 'package:flutter_ecommerce/features/shop/controllers/product/paypal_controller.dart';
 import 'package:flutter_ecommerce/features/shop/screens/cart/cart.dart';
 import 'package:flutter_ecommerce/features/shop/screens/order/order.dart';
 import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
@@ -82,7 +83,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bank,
                     title: 'Bank Account',
                     subtitle: 'Withdraw balance to registered bank account ',
-                    onTap: () {},
+                    onTap: (){},
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.discount_shape,
