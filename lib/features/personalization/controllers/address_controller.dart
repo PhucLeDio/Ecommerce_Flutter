@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/features/personalization/models/address_model.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/address/add_new_address.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
+import 'package:flutter_ecommerce/utils/constants/sizes.dart';
+import 'package:flutter_ecommerce/utils/helpers/cloud_helper_functions.dart';
 import 'package:flutter_ecommerce/utils/network/network_manager.dart';
 import 'package:flutter_ecommerce/utils/popups/full_screen_loader.dart';
 import 'package:flutter_ecommerce/utils/popups/loaders.dart';
@@ -30,7 +35,9 @@ class AddressController extends GetxController {
   Future<List<AddressModel>> getAllUserAddresses() async {
     try {
       final addresses = await addressRepository.fetchUserAddresses();
-      selectedAddress.value = addresses.firstWhere((element) => element.selectedAddress, orElse: () => AddressModel.empty());
+      selectedAddress.value = addresses.firstWhere(
+          (element) => element.selectedAddress,
+          orElse: () => AddressModel.empty());
       return addresses;
     } catch (e) {
       TLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
@@ -57,12 +64,12 @@ class AddressController extends GetxController {
                 ),
               ),
             ),
-          )
-      );
+          ));
 
       // clear all selected
       if (selectedAddress.value.id.isNotEmpty) {
-        await addressRepository.updateSelectedField(selectedAddress.value.id, false);
+        await addressRepository.updateSelectedField(
+            selectedAddress.value.id, false);
       }
 
       // assign selected address
@@ -70,9 +77,11 @@ class AddressController extends GetxController {
       selectedAddress.value = newSelectedAddress;
 
       // set the selected
-      await addressRepository.updateSelectedField(selectedAddress.value.id, true);
+      await addressRepository.updateSelectedField(
+          selectedAddress.value.id, true);
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Error in selection', message: e.toString());
+      TLoaders.errorSnackBar(
+          title: 'Error in selection', message: e.toString());
     }
   }
 
@@ -80,7 +89,8 @@ class AddressController extends GetxController {
   Future addNewAddresses() async {
     try {
       // start loading
-      TFullScreenLoader.openLoadingDialog('Storing address...', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'Storing address...', TImages.docerAnimation);
 
       // check internet connect
       final isConnected = await NetworkManager.instance.isConnected();
@@ -97,15 +107,15 @@ class AddressController extends GetxController {
 
       // save address data
       final address = AddressModel(
-          id: '',
-          name: name.text.trim(),
-          phoneNumber: phoneNumber.text.trim(),
-          street: street.text.trim(),
-          city: city.text.trim(),
-          state: state.text.trim(),
-          postalCode: postalCode.text.trim(),
-          country: country.text.trim(),
-          selectedAddress: true,
+        id: '',
+        name: name.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        street: street.text.trim(),
+        city: city.text.trim(),
+        state: state.text.trim(),
+        postalCode: postalCode.text.trim(),
+        country: country.text.trim(),
+        selectedAddress: true,
       );
 
       final id = await addressRepository.addAddress(address);
@@ -118,7 +128,9 @@ class AddressController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       // show success message
-      TLoaders.successSnackBar(title: 'Congratulations', message: 'Your address has been saved successfully.');
+      TLoaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'Your address has been saved successfully.');
 
       // refresh addresses data
       refreshData.toggle();
@@ -133,6 +145,52 @@ class AddressController extends GetxController {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Address not found', message: e.toString());
     }
+  }
+
+  /// Show address modalbottomsheet at checkout
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Container(
+        padding: const EdgeInsets.all(TSizes.lg),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const TSectionHeading(title: 'Select Address'),
+              FutureBuilder(
+                  future: getAllUserAddresses(),
+                  builder: (_, snapshot) {
+                    // helper function
+                    final response = TCloudHelperFunctions.checkMultiRecordState(
+                        snapshot: snapshot);
+                    if (response != null) return response;
+          
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (_, index) => TSingleAddress(
+                        address: snapshot.data![index],
+                        onTap: () async {
+                          await selectAddress(snapshot.data![index]);
+                          Get.back();
+                        },
+                      ),
+                    );
+                  }),
+              const SizedBox(height: TSizes.defaultSpace * 2),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Get.to(() => const AddNewAddressScreen()),
+                  child: const Text('Add new address'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   // reset form fields

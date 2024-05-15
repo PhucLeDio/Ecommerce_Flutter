@@ -1,3 +1,4 @@
+import 'package:flutter_ecommerce/features/shop/screens/purchase/purchase.dart';
 import 'package:flutter_ecommerce/routes/routes.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -20,7 +21,7 @@ class AppRoutes {
     GetPage(name: TRoutes.settings, page: () => const SettingsScreen()),
     // GetPage(name: TRoutes.productReviews, page: () => const ProductReviewsScreen()),
     // GetPage(name: TRoutes.order, page: () => const OrderScreen()),
-    // GetPage(name: TRoutes.checkout, page: () => const CheckoutScreen()),
+    GetPage(name: TRoutes.checkout, page: () => const PurchaseScreen()),
     // GetPage(name: TRoutes.cart, page: () => const CartScreen()),
     GetPage(name: TRoutes.userProfile, page: () => const ProfileScreen()),
     // GetPage(name: TRoutes.userAddress, page: () => const UserAddressScreen()),
