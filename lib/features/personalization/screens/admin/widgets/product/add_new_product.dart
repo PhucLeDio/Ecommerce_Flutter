@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../common/widgets/appbar/appbar.dart';
-import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/validators/validation.dart';
+import '../../../../../../common/widgets/appbar/appbar.dart';
+import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/sizes.dart';
+import '../../../../../../utils/validators/validation.dart';
 
 class AddNewProduct extends StatelessWidget {
   const AddNewProduct({super.key});

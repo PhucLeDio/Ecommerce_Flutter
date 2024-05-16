@@ -121,6 +121,8 @@ class UserController extends GetxController {
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.warningSnackbar(title: 'Oh snap!', message: e.toString());
+    } finally {
+      TFullScreenLoader.stopLoading();
     }
   }
 

@@ -1,16 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:flutter_ecommerce/common/widgets/layouts/grid_layout.dart';
-import 'package:flutter_ecommerce/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:flutter_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../controllers/all_products_controller.dart';
-import '../../controllers/product/product_controller.dart';
 import '../sort/sortable_products.dart';
 
 class AllProducts extends StatelessWidget {
@@ -30,7 +26,7 @@ class AllProducts extends StatelessWidget {
 
     return Scaffold(
       appBar:
-          TAppBar(title: Text(title), showBackArrow: true),
+        TAppBar(title: Text(title), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
