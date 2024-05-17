@@ -11,6 +11,9 @@ import 'package:flutter_ecommerce/features/shop/screens/order/order.dart';
 import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/address/address.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/admin/load_multiple_choice.dart';
+import 'package:flutter_ecommerce/localization/map_screen.dart';
+import 'package:flutter_ecommerce/localization/order_tracking_page.dart';
+import 'package:flutter_ecommerce/features/shop/screens/deliver/widget/map/view_map.dart';
 import 'package:flutter_ecommerce/utils/constants/colors.dart';
 import 'package:flutter_ecommerce/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -118,7 +121,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.location,
                     title: 'Geolocation',
                     subtitle: 'Set recommendation based on location',
-                    trailing: Switch(value: true, onChanged: (value) {}),
+                    trailing: Switch(value: false, onChanged: (value){}),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.security_user,

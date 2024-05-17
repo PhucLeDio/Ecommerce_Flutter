@@ -36,6 +36,22 @@ dependencies:
   flutter_paypal_checkout: ^1.0.1
   flutter_inappwebview: ^5.8.0
 
+  # google map:
+  flutter_polyline_points: ^1.0.0
+  google_maps_flutter: ^2.1.7
+  location: ^4.4.0
+  flutter_svg: ^1.1.0
+  permission_handler: ^11.3.1
+
+  # flutter map
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.0
+  flutter_osm_plugin: ^0.70.4
+  webview_flutter: ^4.2.4
+
+  # Printer
+  printing: ^5.6.0
+
   # Icons
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.6
@@ -74,6 +90,8 @@ flutter:
     - assets/images/products/
     - assets/icons/payment_methods/
     - assets/pdf/
+    - assets/fonts/Roboto-Bold.ttf
+    - assets/fonts/Roboto-Regular.ttf
 
   #----------Local font------------#
   fonts:
@@ -94,3 +112,7 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 800
+        - asset: assets/fonts/Helvetica.ttf
+          weight: 300
+        - asset: assets/fonts/Helvetica-Bold.ttf
+          weight: 600
