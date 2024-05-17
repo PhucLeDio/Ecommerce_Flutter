@@ -108,6 +108,18 @@ class ProductController extends GetxController {
     return stock > 0 ? 'In stock' : 'Out of stock';
   }
 
+  // remove product
+  void deleteProductById(String productId) async {
+    try {
+      TFullScreenLoader.openLoadingDialog('Processing', TImages.docerAnimation);
+
+      productRepository.removeProductRecord(productId);
+    } catch (e) {
+      TFullScreenLoader.stopLoading();
+      TLoaders.warningSnackbar(title: 'Oh snap!', message: e.toString());
+    }
+  }
+
   // add new product
   Future addNewProducts() async {
     try {
@@ -213,6 +225,8 @@ class ProductController extends GetxController {
       // remove loader
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Product not found', message: e.toString());
+    } finally {
+      TFullScreenLoader.stopLoading();
     }
   }
 

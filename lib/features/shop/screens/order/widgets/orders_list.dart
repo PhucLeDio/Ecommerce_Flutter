@@ -5,6 +5,8 @@ import 'package:flutter_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:flutter_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_ecommerce/common/widgets/loaders/animation_loader.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/product/order_controller.dart';
+import 'package:flutter_ecommerce/features/shop/screens/deliver/order_options.dart';
+import 'package:flutter_ecommerce/features/shop/screens/deliver/widget/map/view_map.dart';
 import 'package:flutter_ecommerce/navigation_menu.dart';
 import 'package:flutter_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter_ecommerce/utils/helpers/cloud_helper_functions.dart';
@@ -84,7 +86,15 @@ class TOrderListItems extends StatelessWidget {
                           IconButton(
                               icon: Icon(Iconsax.arrow_right_34,
                                   size: TSizes.iconSm),
-                              onPressed: () {}),
+                              onPressed: () => Get.to(() => OrderOptionScreen(
+                                    id: order.id.toString(),
+                                    orderDate: order.orderDate.toString(),
+                                    paymentMethod:
+                                        order.paymentMethod.toString(),
+                                    deliveryDate: order.deliveryDate.toString(),
+                                    address: order.address.toString(),
+                                    price: order.totalAmount.toString(),
+                                  ))),
                         ],
                       ),
                       SizedBox(height: TSizes.spaceBtwItems),
@@ -103,17 +113,31 @@ class TOrderListItems extends StatelessWidget {
                                 Flexible(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text('Order', maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.labelMedium,),
-                                      Text(order.id, maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.titleMedium,),
+                                      Text(
+                                        'Order',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelMedium,
+                                      ),
+                                      Text(
+                                        order.id,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-
                           Expanded(
                             child: Row(
                               children: [

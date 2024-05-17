@@ -134,4 +134,13 @@ class ProductRepository extends GetxController {
       throw e.toString();
     }
   }
+
+  /// Remove product data
+  Future<void> removeProductRecord(String productId) async {
+    try {
+      await _db.collection("Products").doc(productId).delete();
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

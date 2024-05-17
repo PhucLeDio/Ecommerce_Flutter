@@ -61,6 +61,8 @@ class TImages {
   static const String successfullyRegisterAnimation = "assets/images/animations/success.json";
 
   // -- Payment Methods
-static const String paypal = "assets/icons/payment_methods/paypal.png";
+  static const String paypal = "assets/icons/payment_methods/paypal.png";
 
+  // -- Printer
+  static const String printer = "assets/images/user/indian-female-painter-painting.png";
 }
