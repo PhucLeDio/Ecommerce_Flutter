@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_ecommerce/data/services/firebase_storage_service.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../features/shop/models/product_model.dart';
 import '../../../utils/enums/enums.dart';
@@ -139,6 +143,27 @@ class ProductRepository extends GetxController {
   Future<void> removeProductRecord(String productId) async {
     try {
       await _db.collection("Products").doc(productId).delete();
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// Upload image
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// Upload any field
+  Future<void> updateSingleField(Map<String, dynamic> json, String productId) async {
+    try {
+      await _db.collection("Products").doc(productId).update(json);
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
