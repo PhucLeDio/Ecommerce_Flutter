@@ -13,7 +13,7 @@ class ViewChatBot extends StatefulWidget {
 class _ViewChatBotState extends State<ViewChatBot> {
   final controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..loadRequest(Uri.parse("https://chatgpt.com/?oai-dm=1"));
+    ..loadRequest(Uri.parse("https://chatgpt.com/"));
 
   @override
   Widget build(BuildContext context) {
