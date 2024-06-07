@@ -36,16 +36,16 @@ class LoadMultipleChoice extends StatelessWidget {
                     onTap: () => Get.to(() => const CrudProductScreen()),
                   ),
                   TSettingsMenuTile(
-                    icon: Iconsax.document_upload,
-                    title: 'Categories',
-                    subtitle: 'Set shopping products details',
-                    onTap: () {},
-                  ),
-                  TSettingsMenuTile(
                     icon: Iconsax.notification,
                     title: 'Brands',
                     subtitle: 'Set shopping products details',
                     onTap: () => Get.to(() => const AddNewBrand()),
+                  ),
+                  TSettingsMenuTile(
+                    icon: Iconsax.document_upload,
+                    title: 'Categories',
+                    subtitle: 'Set shopping products details',
+                    onTap: () {},
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.image,

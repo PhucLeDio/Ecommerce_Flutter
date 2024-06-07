@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/admin/widgets/add_new_brand.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/admin/widgets/product/add_new_product.dart';
 import 'package:flutter_ecommerce/features/personalization/screens/admin/widgets/product/all_product_to_delete.dart';
+import 'package:flutter_ecommerce/features/personalization/screens/admin/widgets/product/all_product_to_upload_image.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -41,7 +42,7 @@ class CrudProductScreen extends StatelessWidget {
                     icon: Iconsax.document_upload,
                     title: 'Upload image',
                     subtitle: 'Set shopping products details',
-                    onTap: () {},
+                    onTap: () => Get.to(() => AllProductsUploadImage(title: 'Upload image product', futureMethod: controller.fetchAllFeaturedProducts(),)),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.notification,

@@ -6,6 +6,7 @@ import 'package:flutter_ecommerce/common/widgets/texts/section_heading.dart';
 import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/product/paypal_controller.dart';
+import 'package:flutter_ecommerce/features/shop/screens/assistant/chat_bot.dart';
 import 'package:flutter_ecommerce/features/shop/screens/cart/cart.dart';
 import 'package:flutter_ecommerce/features/shop/screens/order/order.dart';
 import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
@@ -81,6 +82,12 @@ class SettingsScreen extends StatelessWidget {
                     title: 'My Orders',
                     subtitle: 'In-progress and Completed Orders',
                     onTap: ()=> Get.to(()=> const OrderScreen()),
+                  ),
+                  TSettingsMenuTile(
+                    icon: Iconsax.user,
+                    title: 'Chatbot panel',
+                    subtitle: 'Ask us in every topics, every field ',
+                    onTap: () => Get.to(() => const ViewChatBot()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.bank,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_ecommerce/features/shop/models/product_model.dart';
 import 'package:flutter_ecommerce/utils/popups/loaders.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../data/repositories/product/product_repository.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -26,8 +27,10 @@ class ProductController extends GetxController {
 
   RxBool refreshData = true.obs;
   final isLoading = false.obs;
+  final imageUploading = false.obs;
   final productRepository = Get.put(ProductRepository());
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
+  Rx<ProductModel> product = ProductModel.empty().obs;
 
   @override
   void onInit() {
@@ -117,6 +120,31 @@ class ProductController extends GetxController {
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.warningSnackbar(title: 'Oh snap!', message: e.toString());
+    }
+  }
+
+  // upload image
+  uploadProductProfilePicture(String productId) async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxHeight: 512, maxWidth: 512);
+      if (image != null) {
+        imageUploading.value = true;
+        // Upload image
+        final imageUrl = await productRepository.uploadImage('Product/Images/Uploader/', image);
+
+        // Update User Image Record
+        Map<String, dynamic> json = {'Thumbnail': imageUrl};
+        await productRepository.updateSingleField(json, productId);
+
+        product.value.thumbnail = imageUrl;
+        product.refresh();
+
+        TLoaders.successSnackBar(title: 'Congratulations', message: 'Your product image has been updated!');
+      }
+    } catch (e) {
+      TLoaders.warningSnackbar(title: 'Oh Snap!', message: 'Something went wrong: $e');
+    } finally {
+      imageUploading.value = false;
     }
   }
 
