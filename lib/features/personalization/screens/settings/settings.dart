@@ -7,6 +7,7 @@ import 'package:flutter_ecommerce/data/dummy_data.dart';
 import 'package:flutter_ecommerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_ecommerce/features/shop/controllers/product/paypal_controller.dart';
 import 'package:flutter_ecommerce/features/shop/screens/assistant/chat_bot.dart';
+import 'package:flutter_ecommerce/features/shop/screens/assistant/gemini_bot.dart';
 import 'package:flutter_ecommerce/features/shop/screens/cart/cart.dart';
 import 'package:flutter_ecommerce/features/shop/screens/order/order.dart';
 import 'package:flutter_ecommerce/data/repositories/product/product_repository.dart';
@@ -87,7 +88,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.user,
                     title: 'Chatbot panel',
                     subtitle: 'Ask us in every topics, every field ',
-                    onTap: () => Get.to(() => const ViewChatBot()),
+                    onTap: () => Get.to(() => const GeminiBot()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.bank,

@@ -52,6 +52,10 @@ dependencies:
   # Printer
   printing: ^5.6.0
 
+  # Gemini API
+  flutter_gemini: ^2.0.3
+  dash_chat_2: ^0.0.20
+
   # Icons
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.6
